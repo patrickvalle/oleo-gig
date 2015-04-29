@@ -7,38 +7,15 @@
 // Constants
 var API_CONTEXT_ROOT = '/api';
 var API_CONTROLLERS_PATH = './api/app/controllers';
-var API_MODELS_PATH = './api/app/models';
 var PUBLIC_STATIC_FILES_PATH = './public/app';
 
 // Import dependencies
 var BodyParser = require('body-parser');
 var Express = require('express');
-var Mongoose = require('mongoose');
 var RequireDirectory = require('require-directory');
 var Config = require('./api/app/utilities/Config');
 var ErrorResponse = require('./api/app/utilities/ErrorResponse');
 var Log = require('./api/app/utilities/Log');
-
-// Setup Mongoose connection
-(function(Mongoose, config) {
-  var port = (config.port.length > 0) ? ":" + config.port : '';
-  var login = (config.user.length > 0) ? config.user + ":" + config.pass + "@" : '';
-  var uri =  "mongodb://" + login + config.host + port + "/" + config.name;
-  Mongoose.connect(uri, { db: { 
-    safe: true 
-  }}, function (error) {
-    if(error) {
-      Log.error('Unable to connect to Mongo database @ %s.', uri);
-    } else {
-      Log.info('Successfully connected to Mongo database @ %s.', uri);
-    }
-  });
-}(Mongoose, Config.database));
-
-// Bootstrap Mongoose-enabled models
-(function(path) {
-  RequireDirectory(module, path);
-}(API_MODELS_PATH));
 
 // Create Express router (for Controllers to mount their request handlers to)
 var router = Express.Router();

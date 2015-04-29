@@ -11,6 +11,7 @@ module.exports = function() {
 
   // Here are all the must-have environment variables
   var REQUIRED_ENVIRONMENT_VARIABLES = [
+    'OG_WUNDERGROUND_KEY'
   ];
 
   // Checks for required environment variables and errors out if any are missing
@@ -30,16 +31,12 @@ module.exports = function() {
 
   // Public API
   return {
-    'database': {
-      'host': process.env.OG_DATABASE_HOST || '0.0.0.0',
-      'port': process.env.OG_DATABASE_PORT || '27017',
-      'name': process.env.OG_DATABASE_NAME || '',
-      'user': process.env.OG_DATABASE_USER || '',
-      'pass': process.env.OG_DATABASE_PASS || ''
-    },
     'server': {
       'host': process.env.OG_SERVER_HOST || '0.0.0.0',
       'port': process.env.OG_SERVER_PORT || '3000'
+    },
+    'wunderground': {
+      'key': process.env.OG_WUNDERGROUND_KEY
     },
     'log': {
       'level': process.env.OG_LOG_LEVEL || 'debug'
