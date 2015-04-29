@@ -1,0 +1,4 @@
+.weather-today { float: left; text-align: center; margin: 0 0 0; width: 150px; }
+.weather-today i { font-size: 4em; margin: 8px 0 0; }
+.weather-today p { font-size: 1.2em; font-weight: bold; margin: 15px 0 0; }
+.weather-today p:after { content: "\00b0"; }

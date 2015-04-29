@@ -1,0 +1,9 @@
+{
+  "name": "oleo-gig",
+  "version": "0.1.0",
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "appPath": "public/app"
+}

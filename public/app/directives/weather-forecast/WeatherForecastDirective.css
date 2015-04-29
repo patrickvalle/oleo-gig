@@ -1,0 +1,10 @@
+.weather-forecast { font-size: 1.1em; padding: 5px 0; }
+.weather-forecast p { line-height: 20px; }
+.weather-forecast i { font-size: 1.3em; line-height: 20px; }
+.weather-forecast .high,
+.weather-forecast .low,
+.weather-forecast .precip { text-align: center; }
+.weather-forecast .high:after,
+.weather-forecast .low:after { content: "\00b0"; }
+.weather-forecast .precip:after { content: "%"; }
+.weather-forecast .wind:after { content: " mph"; }

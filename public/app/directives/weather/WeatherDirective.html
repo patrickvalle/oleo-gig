@@ -1,0 +1,28 @@
+<div class="weather">
+  <div class="header">
+    <p class="location">{{location}}</p>
+    <p class="temperature">{{temperature}}</p>
+    <i class="wi {{icon}} conditions" title="{{conditions}}"></i>
+    <div class="clearfix"></div>
+  </div>
+  <div class="content-header row">
+    <div class="col-md-2"><!-- day/date --></div>
+    <div class="col-md-1"><!-- conditions icon --></div>
+    <div class="col-md-1">
+      <p class="high">High</p>
+    </div>
+    <div class="col-md-1">
+      <p class="low">Low</p>
+    </div>
+    <div class="col-md-3">
+      <p class="conditions-description">Description</p>
+    </div>
+    <div class="col-md-2">
+      <p class="precip">Precip.</p>
+    </div>
+    <div class="col-md-2">
+      <p class="wind">Wind</p>
+    </div>
+  </div>
+  <div class="content" ng-transclude></div>
+</div>

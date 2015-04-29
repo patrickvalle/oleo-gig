@@ -1,0 +1,5 @@
+.card.panel .panel-heading { background: #0FB2FC; border-bottom: 1px solid #039BE5; color: #fff; }
+.card.panel .panel-heading h2 { font-size: 1.5em; line-height: 20px; margin: 0; }
+.card.panel .panel-heading a { color: #fff; font-size: 1.5em; line-height: 20px; }
+.card.panel .panel-heading a.fa-spin { cursor: default; }
+.card.panel .panel-heading a.fa-spin:hover i { color: inherit; }

@@ -1,0 +1,14 @@
+.weather { margin-bottom: 20px; }
+.weather:last-of-type { margin-bottom: 0; }
+
+.weather .content-header { font-size: 1.1em; }
+.weather .content-header .high,
+.weather .content-header .low, 
+.weather .content-header .precip { text-align: center; }
+
+
+.weather .header { border-bottom: 1px dotted #333; margin-bottom: 5px; }
+.weather .header .location { float: left; font-size: 1.25em; margin: 0 10px 0 0; }
+.weather .header .temperature { float: right; font-size: 1.25em; margin: 0 5px 0; }
+.weather .header .conditions { float: right; font-size: 1.5em; }
+.weather .header .temperature:after { content: "\00b0"; }
