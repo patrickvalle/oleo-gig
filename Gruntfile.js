@@ -337,6 +337,11 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('generateConfig', 'Generates an environment config for client-side use', function() {
+    var config = require('./api/app/utilities/Config');
+    grunt.file.write('./public/app/config.js', 'var Config=' + JSON.stringify(config));
+  });
+
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
@@ -345,6 +350,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'generateConfig',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -363,6 +369,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
+    'generateConfig',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
@@ -379,7 +386,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'newer:jshint',
-    'test',
     'build'
   ]);
 };

@@ -3,8 +3,4 @@
 angular.module('app', [
   'ngAnimate',
   'ngTouch'
-]).constant('Config', {
-  api: {
-    root: 'http://localhost:3000'
-  }
-});
+]).constant('_', window._).constant('_s', window.s).constant('Config', window.Config);

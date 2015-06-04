@@ -32,8 +32,11 @@ module.exports = function() {
   // Public API
   return {
     'server': {
-      'host': process.env.OG_SERVER_HOST || '0.0.0.0',
+      'host': process.env.OG_SERVER_HOST || 'localhost',
       'port': process.env.OG_SERVER_PORT || '3000'
+    },
+    'api': {
+      'root': '/api'
     },
     'wunderground': {
       'key': process.env.OG_WUNDERGROUND_KEY

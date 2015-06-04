@@ -2,8 +2,8 @@
   "name": "oleo-gig",
   "version": "0.1.0",
   "dependencies": {
+    "weather-icons": "master"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "appPath": "public/app"
 }

@@ -8,13 +8,12 @@
     <meta name="description" content="iGoogle-like dashboard">
     <meta name="viewport" content="width=device-width">
     <!-- Vendor styles -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/weather-icons/1.3.2/css/weather-icons.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- build:css(.tmp) styles/app.css -->
+    <link rel="stylesheet" href="assets/bower_components/weather-icons/css/weather-icons.css">
     <link rel="stylesheet" href="assets/styles/global.css">
-    <link rel="stylesheet" href="assets/styles/iconvault-forecast-font.css">
     <link rel="stylesheet" href="directives/card/CardDirective.css">
     <link rel="stylesheet" href="directives/weather/WeatherDirective.css">
     <link rel="stylesheet" href="directives/weather-forecast/WeatherForecastDirective.css">
@@ -28,19 +27,15 @@
     <content>
       <div class="row">
         <!-- Weather card -->
-        <div class="col-lg-6" ng-controller="WeatherController">
-          <card heading="Weather" on-refresh="onRefresh">
-            <weather location="Durham, NC" conditions="sunny" temperature="58">
-              <weather-forecast date="04/22/2015" conditions="sunny" description="Sunny" high="61" low="36" precip="80" wind-direction="W" wind-speed="20"></weather-forecast>
-              <weather-forecast date="04/22/2015" conditions="sunny" description="Sunny" high="61" low="36" precip="80" wind-direction="W" wind-speed="20"></weather-forecast>
-            
-            </weather>
-
-            <weather location="Mt. Laurel, NJ" conditions="sunny" temperature="58">
-              
-            </weather>
-
-
+        <div class="col-lg-6" ng-controller="WeatherController as weather">
+          <card heading="Weather" on-refresh="weather.onRefresh">
+            <div ng-repeat="data in weather.data()">
+              <weather location="{{data.location.name}}" zip="{{data.location.zip}}" time-of-day="{{data.current.timeOfDay}}" icon="{{data.current.icon}}" conditions="{{data.current.conditions}}" temperature="{{data.current.temperature.f}}" wind-direction="{{data.current.wind.direction}}" wind-degrees="{{data.current.wind.degrees}}" wind-speed="{{data.current.wind.mph}}">
+                <div ng-repeat="forecast in data.forecast | limitTo: weather.maxForecastResults()">
+                  <weather-forecast date="{{forecast.date}}" icon="{{forecast.icon}}" conditions="{{forecast.conditions}}" high="{{forecast.high.f}}" low="{{forecast.low.f}}" precip="{{forecast.precipitation}}"></weather-forecast>
+                </div>
+              </weather>
+            </div>
           </card>
         </div>
         <!-- Stocks card -->
@@ -51,16 +46,20 @@
     </content>
 
     <!-- Vendor scripts -->
-    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-touch.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-touch.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.string/3.0.3/underscore.string.min.js"></script>
     <!-- build:js({.tmp,app}) scripts/app.js -->
+    <script src="config.js"></script>
     <script src="app.js"></script>
     <script src="controllers/LayoutController.js"></script>
     <script src="controllers/WeatherController.js"></script>
+    <script src="services/WeatherIconService.js"></script>
     <script src="services/WeatherService.js"></script>
     <script src="directives/card/CardDirective.js"></script>
     <script src="directives/weather/WeatherDirective.js"></script>

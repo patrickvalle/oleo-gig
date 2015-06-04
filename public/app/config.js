@@ -1,0 +1,1 @@
+var Config={"server":{"host":"localhost","port":"3000"},"api":{"root":"/api"},"wunderground":{"key":"5680688ef6e90851"},"log":{"level":"debug"},"dev":true}

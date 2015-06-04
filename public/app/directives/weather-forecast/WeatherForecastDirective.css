@@ -1,10 +1,14 @@
 .weather-forecast { font-size: 1.1em; padding: 5px 0; }
 .weather-forecast p { line-height: 20px; }
-.weather-forecast i { font-size: 1.3em; line-height: 20px; }
-.weather-forecast .high,
-.weather-forecast .low,
+.weather-forecast i { font-size: 1.5em; line-height: 20px; }
+.weather-forecast .date { color: #999; }
+.weather-forecast .temperature,
 .weather-forecast .precip { text-align: center; }
-.weather-forecast .high:after,
+.weather-forecast .high:after { content: "\00b0"; }
+.weather-forecast .low { color: #999; }
 .weather-forecast .low:after { content: "\00b0"; }
-.weather-forecast .precip:after { content: "%"; }
-.weather-forecast .wind:after { content: " mph"; }
+.weather-forecast i { float: left; margin-right: 6px; }
+.weather-forecast .precip.progress { background: #eee; height: 10px; position: relative; top: 5px; }
+.weather-forecast .precip .progress-bar { background-color: #999; }
+
+.weather-forecast .conditions-description { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

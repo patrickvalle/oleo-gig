@@ -1,14 +1,25 @@
 .weather { margin-bottom: 20px; }
 .weather:last-of-type { margin-bottom: 0; }
 
-.weather .content-header { font-size: 1.1em; }
-.weather .content-header .high,
-.weather .content-header .low, 
-.weather .content-header .precip { text-align: center; }
-
-
-.weather .header { border-bottom: 1px dotted #333; margin-bottom: 5px; }
-.weather .header .location { float: left; font-size: 1.25em; margin: 0 10px 0 0; }
-.weather .header .temperature { float: right; font-size: 1.25em; margin: 0 5px 0; }
-.weather .header .conditions { float: right; font-size: 1.5em; }
+.weather .header { border-bottom: 1px dotted #333; margin: 0 -5px; padding: 0 5px 1px; }
+.weather .header .location { float: left; font-size: 1.25em; margin: 0; }
+.weather .header .location a { color: inherit; }
+.weather .header .location a:active,
+.weather .header .location a:hover,
+.weather .header .location a:visited { text-decoration: none; }
+.weather .header .temperature { float: right; font-size: 1.25em; margin: 0; }
 .weather .header .temperature:after { content: "\00b0"; }
+.weather .header .conditions { float: right; font-size: 1.5em; left: -3px; margin: 0 5px 0 0; position: relative; top: 2px; }
+.weather .header .wind { float: right; font-size: 1.5em; left: -5px; margin: 0 5px 0 0; position: relative; top: 2px; }
+
+
+.weather .content-header { color: #999; font-size: 0.75em;  }
+.weather .content-header > * { position: relative; top: 5px; }
+.weather .content-header .temperature { text-align: center; }
+.weather .content-header .temperature .high:after { content: " / "; }
+
+.weather .wi-cloudy { color: #999; }
+.weather .wi-day-showers,
+.weather .wi-day-storm-showers { color: #3f51b5; }
+.weather .wi-day-sunny,
+.weather .wi-day-sunny-overcast { color: #ffa000; }

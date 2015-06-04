@@ -5,12 +5,10 @@
  */
 
 // Constants
-var API_CONTEXT_ROOT = '/api';
 var API_CONTROLLERS_PATH = './api/app/controllers';
 var PUBLIC_STATIC_FILES_PATH = './public/app';
 
 // Import dependencies
-var BodyParser = require('body-parser');
 var Express = require('express');
 var RequireDirectory = require('require-directory');
 var Config = require('./api/app/utilities/Config');
@@ -20,8 +18,14 @@ var Log = require('./api/app/utilities/Log');
 // Create Express router (for Controllers to mount their request handlers to)
 var router = Express.Router();
 
-// Configure JSON body parsing on the router
-router.use(BodyParser.json());
+// Setup CORS on the router (dev only)
+if(Config.dev) {
+  router.use(function(request, response, next) {
+    response.header('Access-Control-Allow-Origin', '*');
+    response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
+}
 
 // Bootstrap controllers and attach their corresponding routes to the router
 (function(router, path) {
@@ -32,7 +36,7 @@ router.use(BodyParser.json());
 
 // Create Express server and mount the router
 var server = Express();
-server.use(API_CONTEXT_ROOT, router);
+server.use(Config.api.root, router);
 
 // Configure static file support
 server.use(Express.static(PUBLIC_STATIC_FILES_PATH));

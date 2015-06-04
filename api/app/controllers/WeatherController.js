@@ -3,8 +3,8 @@
 // Import dependencies
 var _s = require('underscore.string');
 var URL = require('url');
-var WunderNode = require('wundernode');
-var Config = require('../utilities/Config');
+var TimeOfDay = require('../models/TimeOfDay');
+var Weather = require('../models/Weather');
 var ErrorResponse = require('../utilities/ErrorResponse');
 
 /**
@@ -12,32 +12,19 @@ var ErrorResponse = require('../utilities/ErrorResponse');
  */
 module.exports = function(router) {
 
-  var wunderNode = new WunderNode(Config.wunderground.key, false, 10, 'minute');
-
   /**
    *
    */
-  router.get('/weather/conditions', function(request, response) {
-    var location = URL.parse(request.url).query;
-    wunderNode.conditions(location, function(error, conditions) {
-      if(!error) {
-        response.send(conditions);
-      }
-      else {
-        var message = _s.sprintf('An error occurred while attempting to get the conditions for %s.', location);
-        ErrorResponse.send(response, 500, message, error);
-      }
-    });
-  });
-
-  /**
-   * 
-   */
   router.get('/weather/forecast', function(request, response) {
     var location = URL.parse(request.url).query;
-    wunderNode.forecast10day(location, function(error, forecast) {
+    Weather.getForLocation(location, function(error, weather) {
       if(!error) {
-        response.send(forecast);
+        var latitude = weather.location.latitude;
+        var longitude = weather.location.longitude;
+        TimeOfDay.getForLatitudeAndLongitude(latitude, longitude, function(error, timeOfDay) {
+          weather.current.timeOfDay = timeOfDay.timeOfDay;
+          response.send(weather);
+        });
       }
       else {
         var message = _s.sprintf('An error occurred while attempting to get the forecast for %s.', location);

@@ -1,25 +1,30 @@
 <div class="weather-forecast">
   <div class="row">
-    <div class="col-xs-4 col-sm-2">
-      <p class="day">{{day}} ({{date}})</p>
+    <div class="hidden-xs col-sm-1"><!-- indent --></div>
+    <div class="col-xs-2 col-sm-1">
+      <p class="day" title="{{dateFormatted}}">{{day}}</p>
+    </div>
+    <div class="hidden-xs col-sm-1">
+      <p class="date">{{dateFormatted}}</p>
     </div>
     <div class="col-xs-2 col-sm-1">
-      <i class="wi {{icon}}" title="{{conditions}}"></i>
+      <i class="wi {{conditionsIcon}}" title="{{conditions}}"></i>
     </div>
-    <div class="col-xs-3 col-sm-1">
-      <p class="high">{{high}}</p>
+    <div class="col-xs-5 col-sm-2">
+      <p class="temperature">
+        <span class="high">{{high}}</span>
+        <span class="low">/ {{low}}</span>
+      </p>
     </div>
-    <div class="col-xs-3 col-sm-1">
-      <p class="low">{{low}}</p>
-    </div>
-    <div class="hidden-xs col-sm-3">
+    <div class="hidden-xs col-sm-4">
       <p class="conditions-description">{{conditions}}</p>
     </div>
-    <div class="hidden-xs col-sm-2">
-      <p class="precip">{{precip}}</p>
-    </div>
-    <div class="hidden-xs col-sm-2">
-      <p class="wind">{{windDirection}} {{windSpeed}}</p>
+    <div class="col-xs-3 col-sm-2">
+      <div class="progress precip" title="{{precip}}%">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{precip}}" aria-valuemin="0" aria-valuemax="100" style="width: {{precip}}%;">
+          <span class="sr-only">{{precip}}%</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
