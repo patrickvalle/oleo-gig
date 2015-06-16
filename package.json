@@ -1,11 +1,11 @@
 {
-  "name": "oleo-gig",
+  "name": "zombie-dashboard",
   "version": "1.0.0",
   "description": "iGoogle resurrection",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/patrickvalle/oleo-gig.git"
+    "url": "https://github.com/patrickvalle/zombie-dashboard.git"
   },
   "author": "Patrick Valle <github@patrickvalle.com> (http://www.patrickvalle.com)",
   "dependencies": {
