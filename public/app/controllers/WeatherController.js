@@ -19,7 +19,7 @@ angular.module('app').controller('WeatherController',
 
   var loadData = function(callback) {
     var _callback = callback || _.noop;
-    WeatherService.getForecast(LOCATIONS, function(forecasts) {
+    WeatherService.getForecasts(LOCATIONS, function(forecasts) {
       console.log('Fetching weather data... success!');
       data = forecasts;
       _callback();
@@ -31,7 +31,6 @@ angular.module('app').controller('WeatherController',
 
   this.maxForecastResults = function() { return MAX_FORECAST_RESULTS; };
   this.data = function() { return data; };
-  this.loading = function() { return loading; };
   this.onRefresh = function(done) {
     loadData(done);
   };

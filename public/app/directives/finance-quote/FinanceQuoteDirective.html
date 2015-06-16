@@ -1,0 +1,25 @@
+<div class="finance-quote">
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <p class="symbol"><a href="https://www.google.com/finance?q={{symbol}}" target="_blank">{{symbol}}</a></p>
+    </div>
+    <div class="col-xs-4 col-sm-2">
+      <p class="price">{{price | number: 2}}</p>
+    </div>
+    <div class="col-xs-4 col-sm-2">
+      <p class="change dollar {{changeClass}}">{{changeDollar | number: 2}}</p>
+    </div>
+    <div class="hidden-xs col-sm-2">
+      <p class="change percent {{changeClass}}">{{changePercent | number: 2}}%</p>
+    </div>
+    <div class="hidden-xs col-sm-4">
+      <p class="year low">{{yearLow | number: 2}}</p>
+      <p class="year high">{{yearHigh | number: 2}}</p>
+      <div class="progress graph" title="{{price | number: 2}}">
+      <div class="progress-bar" role="progressbar" aria-valuenow="{{price | number: 2}}" aria-valuemin="{{yearLow | number: 2}}" aria-valuemax="{{yearHigh | number: 2}}" style="width: {{graphPercentage}}%;">
+        <span class="sr-only">{{price | number: 2}}</span>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

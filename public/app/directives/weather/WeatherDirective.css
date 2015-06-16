@@ -9,9 +9,8 @@
 .weather .header .location a:visited { text-decoration: none; }
 .weather .header .temperature { float: right; font-size: 1.25em; margin: 0; }
 .weather .header .temperature:after { content: "\00b0"; }
-.weather .header .conditions { float: right; font-size: 1.5em; left: -3px; margin: 0 5px 0 0; position: relative; top: 2px; }
+.weather .header .conditions { float: right; font-size: 1.5em; left: -3px; margin: 0 5px 0 0; position: relative; top: 1px; }
 .weather .header .wind { float: right; font-size: 1.5em; left: -5px; margin: 0 5px 0 0; position: relative; top: 2px; }
-
 
 .weather .content-header { color: #999; font-size: 0.75em;  }
 .weather .content-header > * { position: relative; top: 5px; }
@@ -20,6 +19,7 @@
 
 .weather .wi-cloudy { color: #999; }
 .weather .wi-day-showers,
-.weather .wi-day-storm-showers { color: #3f51b5; }
+.weather .wi-day-storm-showers,
+.weather .wi-day-thunderstorm { color: #3f51b5; }
 .weather .wi-day-sunny,
 .weather .wi-day-sunny-overcast { color: #ffa000; }

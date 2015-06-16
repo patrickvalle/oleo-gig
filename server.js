@@ -48,9 +48,8 @@ server.use(function(error, request, response, next) {
 
 // Start Express server
 (function(server, config) {
-  var instance = server.listen(config.port, config.host, function() {
-    var host = instance.address().address;
+  var instance = server.listen(config.port, function() {
     var port = instance.address().port;
-    Log.info('Express server started @ http://%s:%s.', host, port);
+    Log.info('Express server started on port %s', port);
   });
 }(server, Config.server));

@@ -32,8 +32,7 @@ module.exports = function() {
   // Public API
   return {
     'server': {
-      'host': process.env.OG_SERVER_HOST || 'localhost',
-      'port': process.env.OG_SERVER_PORT || '3000'
+      'port': process.env.OG_SERVER_PORT || process.env.PORT
     },
     'api': {
       'root': '/api'

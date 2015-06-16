@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="assets/bower_components/weather-icons/css/weather-icons.css">
     <link rel="stylesheet" href="assets/styles/global.css">
     <link rel="stylesheet" href="directives/card/CardDirective.css">
+    <link rel="stylesheet" href="directives/finance/FinanceDirective.css">
+    <link rel="stylesheet" href="directives/finance-quote/FinanceQuoteDirective.css">
     <link rel="stylesheet" href="directives/weather/WeatherDirective.css">
     <link rel="stylesheet" href="directives/weather-forecast/WeatherForecastDirective.css">
     <!-- endbuild -->
@@ -22,7 +24,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body ng-app="app" ng-controller="LayoutController">
+  <body ng-app="app">
 
     <content>
       <div class="row">
@@ -39,8 +41,14 @@
           </card>
         </div>
         <!-- Stocks card -->
-        <div class="col-lg-6">
-          
+        <div class="col-lg-6" ng-controller="FinanceController as finance">
+          <card heading="Stocks" on-refresh="finance.onRefresh">
+            <finance>
+              <div ng-repeat="data in finance.data()">
+                <finance-quote symbol="{{data.symbol}}" price="{{data.price}}" change-dollar="{{data.change.dollar}}" change-percent="{{data.change.percent}}" year-high="{{data.year.high}}" year-low="{{data.year.low}}"></finance-quote>
+              </div>
+            </finance>
+          </card>
         </div>
       </div>
     </content>
@@ -55,13 +63,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.string/3.0.3/underscore.string.min.js"></script>
     <!-- build:js({.tmp,app}) scripts/app.js -->
-    <script src="config.js"></script>
     <script src="app.js"></script>
-    <script src="controllers/LayoutController.js"></script>
     <script src="controllers/WeatherController.js"></script>
+    <script src="controllers/FinanceController.js"></script>
     <script src="services/WeatherIconService.js"></script>
     <script src="services/WeatherService.js"></script>
+    <script src="services/FinanceService.js"></script>
     <script src="directives/card/CardDirective.js"></script>
+    <script src="directives/finance/FinanceDirective.js"></script>
+    <script src="directives/finance-quote/FinanceQuoteDirective.js"></script>
     <script src="directives/weather/WeatherDirective.js"></script>
     <script src="directives/weather-forecast/WeatherForecastDirective.js"></script>
     <!-- endbuild -->

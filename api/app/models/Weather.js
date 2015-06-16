@@ -1,14 +1,14 @@
 'use strict';
 
 var Params = require('paramatas');
-var _ = require('underscore');
+var _ = require('lodash');
 var Wunderground = require('wundergrounded');
 var Config = require('../utilities/Config');
 
 module.exports = function() {
 
   // Instantiate Wundergrounded service
-  var wunderground = new Wunderground(Config.dev).apiKey(Config.wunderground.key).cache().limit()
+  var wunderground = new Wunderground(Config.dev).apiKey(Config.wunderground.key).cache().limit();
 
   var translateWundergroundResponse = function(response) {
     var translatedResponse = response;
@@ -70,7 +70,6 @@ module.exports = function() {
   	// Call Wunderground API
   	wunderground.conditions().forecast10day().request(location, function(error, response) {
       if(!error) {
-        //console.log(response);
         response = translateWundergroundResponse(response);
         callback(false, response);
       }

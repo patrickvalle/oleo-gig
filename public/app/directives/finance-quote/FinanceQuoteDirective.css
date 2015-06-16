@@ -1,0 +1,18 @@
+.finance-quote { height: 50px; }
+.finance-quote p { line-height: 50px; padding: 0; margin: 0; }
+.finance-quote .symbol { font-size: 1.25em; }
+.finance-quote .symbol a { color: inherit; }
+.finance-quote .symbol a:active,
+.finance-quote .symbol a:hover,
+.finance-quote .symbol a:visited { text-decoration: none; }
+.finance-quote .price,
+.finance-quote .change { text-align: right; }
+.finance-quote .change.negative { color: #b71c1c; }
+.finance-quote .change.positive { color: #2e7d32; }
+.finance-quote .year { color: #999; font-size: 0.75em; line-height: normal; }
+.finance-quote .year.low { float: left; }
+.finance-quote .year.high { float: right; }
+.finance-quote .graph { background: #eee; height: 10px; margin: 0; width: 100%; }
+.finance-quote .graph .progress-bar { background: #999; }
+.finance-quote .year,
+.finance-quote .graph { position: relative; top: 10px; }
