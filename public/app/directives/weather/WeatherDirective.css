@@ -17,7 +17,8 @@
 .weather .content-header .temperature { text-align: center; }
 .weather .content-header .temperature .high:after { content: " / "; }
 
-.weather .wi-cloudy { color: #999; }
+.weather .wi-cloudy,
+.weather .wi-day-cloudy { color: #999; }
 .weather .wi-day-showers,
 .weather .wi-day-storm-showers,
 .weather .wi-day-thunderstorm { color: #3f51b5; }
